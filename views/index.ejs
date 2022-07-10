@@ -9,17 +9,17 @@
 </head>
 <body>
     <div class="min-h-screen flex justify-center items-center">
-        <div class="sm:w-4/6 md:w-2/6 bg-white flex flex-col justify-center py-8 rounded-md">
-            <div class="mb-8 sm:w-8/12 md:w-6/12 mx-auto text-center sm:text-xl md:text-3xl font-bold">
+        <div class="sm:w-full md:w-2/6 bg-white flex flex-col justify-center py-8 rounded-md">
+            <div class="mb-8 sm:w-full md:w-6/12 mx-auto text-center sm:text-xl md:text-3xl font-bold">
                 <h4>File Upload</h4>
             </div>
             <input onchange="changeFile(this)" type="file" uploaded-file class="hidden">
-            <div onclick="openFile()" class="mb-4 mx-auto cursor-pointer px-3 py-2 sm:w-8/12 md:w-6/12 ring-1 ring-gray-500 rounded-md">
-                <span class="pl-2 font-bold font-sans select-none" file-name>No file selected</span>
+            <div onclick="openFile()" class="mb-4 mx-auto cursor-pointer px-3 py-2 sm:w-8/12 md:w-6/12 ring-1 ring-gray-400 rounded-md">
+                <span class="font-semibold font-sans select-none text-gray-700" file-name>No file selected</span>
             </div>
-            <input type="password" class="mb-4 sm:w-8/12 md:w-6/12 mx-auto outline-none px-3 py-2 ring-1 ring-gray-500 rounded-md" placeholder="Password.." />
+            <input type="password" class="placeholder:text-gray-700 placeholder:font-semibold mb-4 sm:w-8/12 md:w-6/12 mx-auto outline-none px-3 py-2 ring-1 ring-gray-400 rounded-md" placeholder="Password.." />
             <div class="sm:w-8/12 md:w-6/12 mx-auto flex justify-between">
-                <button class="font-bold font-sans px-6 py-2 ring-1 ring-gray-500 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white">Upload</button>
+                <button class="font-bold font-sans px-6 py-2 ring-1 ring-indigo-700 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white">Upload</button>
                 <div></div>
             </div>
         </div>
