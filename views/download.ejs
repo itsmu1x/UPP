@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>const uuid = '<%=locals?.uuid%>'</script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/styles.css">
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="min-h-screen flex justify-center items-center">
+        <form action="" method="POST" class="sm:w-full md:w-2/6 bg-white flex flex-col justify-center py-8 rounded-md">
+            <div class="mb-8 sm:w-full md:w-6/12 mx-auto text-center sm:text-xl md:text-3xl font-bold">
+                <h4>Download File</h4>
+            </div>
+            <input type="password" name="password" class="placeholder:text-gray-700 placeholder:font-semibold mb-4 sm:w-8/12 md:w-6/12 mx-auto outline-none px-3 py-2 ring-1 ring-gray-400 rounded-md" placeholder="Password.." />
+            <div class="sm:w-8/12 md:w-6/12 mx-auto flex justify-between">
+                <button class="font-bold font-sans px-6 py-2 ring-1 ring-indigo-700 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white">Download</button>
+                <div></div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

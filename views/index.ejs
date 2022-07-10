@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/styles.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" id="theme-styles">
     <title>Document</title>
 </head>
 <body>
@@ -17,14 +19,16 @@
             <div onclick="openFile()" class="mb-4 mx-auto cursor-pointer px-3 py-2 sm:w-8/12 md:w-6/12 ring-1 ring-gray-400 rounded-md">
                 <span class="font-semibold font-sans select-none text-gray-700" file-name>No file selected</span>
             </div>
-            <input type="password" class="placeholder:text-gray-700 placeholder:font-semibold mb-4 sm:w-8/12 md:w-6/12 mx-auto outline-none px-3 py-2 ring-1 ring-gray-400 rounded-md" placeholder="Password.." />
+            <input type="password" file-password class="placeholder:text-gray-700 placeholder:font-semibold mb-4 sm:w-8/12 md:w-6/12 mx-auto outline-none px-3 py-2 ring-1 ring-gray-400 rounded-md" placeholder="Password.." />
             <div class="sm:w-8/12 md:w-6/12 mx-auto flex justify-between">
-                <button class="font-bold font-sans px-6 py-2 ring-1 ring-indigo-700 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white">Upload</button>
+                <button onclick="submitThis()" class="font-bold font-sans px-6 py-2 ring-1 ring-indigo-700 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white">Upload</button>
                 <div></div>
             </div>
         </div>
     </div>
     <script>
+        let selectedFile = null
+
         function openFile() {
             document.querySelector("[uploaded-file]").click()
         }
@@ -41,7 +45,29 @@
 
         function changeFile(e) {
             if(!e.files?.length) return
+            selectedFile = e.files[0]
             document.querySelector("[file-name]").textContent = nameFormat(e.files[0].name)
+        }
+
+        async function submitThis() {
+            const formData = new FormData()
+            formData.append("file", selectedFile)
+            formData.append("password", document.querySelector("[file-password]")?.value)
+
+            const ff = await fetch('/api/uploadFile', { method: "POST", body: formData })
+            const data = await ff.json()
+            if(data.status && data.uuid) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Uploaded",
+                    text: "your uuid: " + data.uuid
+                })
+            }else {
+                Swal.fire({
+                    icon: "error",
+                    text: data?.message || "error"
+                })
+            }
         }
     </script>
 </body>
