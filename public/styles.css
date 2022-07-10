@@ -614,6 +614,10 @@ video {
   margin-bottom: 1rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .flex {
   display: flex;
 }
@@ -874,6 +878,11 @@ video {
   .sm\:w-8\/12 {
     width: 66.666667%;
   }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 @media (min-width: 720px) {
@@ -907,5 +916,10 @@ video {
 
   .md\:w-6\/12 {
     width: 50%;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }

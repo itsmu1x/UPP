@@ -8,8 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="min-h-screen flex justify-center items-center bg-stone-600">
+    <div class="min-h-screen flex justify-center items-center">
         <div class="sm:w-4/6 md:w-2/6 bg-white flex flex-col justify-center py-8 rounded-md">
+            <div class="mb-8 sm:w-8/12 md:w-6/12 mx-auto text-center sm:text-xl md:text-3xl font-bold">
+                <h4>File Upload</h4>
+            </div>
             <input onchange="changeFile(this)" type="file" uploaded-file class="hidden">
             <div onclick="openFile()" class="mb-4 mx-auto cursor-pointer px-3 py-2 sm:w-8/12 md:w-6/12 ring-1 ring-gray-500 rounded-md">
                 <span class="pl-2 font-bold font-sans select-none" file-name>No file selected</span>
