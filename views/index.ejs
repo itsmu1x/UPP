@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="min-h-screen flex justify-center items-center bg-stone-600">
+        <div class="sm:w-4/6 md:w-2/6 bg-white flex flex-col justify-center py-8 rounded-md">
+            <input onchange="changeFile(this)" type="file" uploaded-file class="hidden">
+            <div onclick="openFile()" class="mb-4 mx-auto cursor-pointer px-3 py-2 sm:w-8/12 md:w-6/12 ring-1 ring-gray-500 rounded-md">
+                <span class="pl-2 font-bold font-sans select-none" file-name>No file selected</span>
+            </div>
+            <input type="password" class="mb-4 sm:w-8/12 md:w-6/12 mx-auto outline-none px-3 py-2 ring-1 ring-gray-500 rounded-md" placeholder="Password.." />
+            <div class="sm:w-8/12 md:w-6/12 mx-auto flex justify-between">
+                <button class="font-bold font-sans px-6 py-2 ring-1 ring-gray-500 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white">Upload</button>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openFile() {
+            document.querySelector("[uploaded-file]").click()
+        }
+
+        function getExt(name) {
+            const list = name.split("\.")
+            return list[list.length - 1]
+        }
+
+        function nameFormat(name) {
+            if(!name) return "No file selected"
+            return name?.length > 16 ? name.substring(0, 18) + ".." + getExt(name) : name
+        }
+
+        function changeFile(e) {
+            if(!e.files?.length) return
+            document.querySelector("[file-name]").textContent = nameFormat(e.files[0].name)
+        }
+    </script>
+</body>
+</html>
