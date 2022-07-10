@@ -4,16 +4,6 @@ const { v4: uuidV4 } = require("uuid")
 const execute = require('./mysql')
 const bcrypt = require("bcrypt")
 
-/*
-execute(
-    `CREATE TABLE IF NOT EXISTS files(
-        id VARCHAR(50) UNIQUE,
-        filePath VARCHAR(150) UNIQUE,
-        password VARCHAR(100) NULL DEFAULT NULL
-    );`
-).then(() => console.log(`Created the table!`))
-*/
-
 const app = express()
 app.use("/public", express.static("public"))
 app.set('view engine', 'ejs')
